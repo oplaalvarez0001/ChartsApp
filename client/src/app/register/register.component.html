@@ -1,0 +1,28 @@
+<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="false">
+    <h2 class="text-center text-primary">Sign up</h2>
+    <hr>
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" [(ngModel)]="model.username" placeholder="Username">
+    </div>
+
+
+    <!-- <div class="form-group mt-2">
+        <label>What is your favorite Chart?</label>
+        <select class="form-control">
+            <option *ngFor="let user of usersFromHomeComponent" [value]="user.userName">
+                {{user.userName}}
+            </option>
+        </select>
+    </div> -->
+
+    
+    <div class="form-group">
+        <input type="password" class="form-control mt-2" name="password" [(ngModel)]="model.password"
+            placeholder="Password">
+    </div>
+
+    <div class="form-group text-center mt-2">
+        <button class="btn btn-success me-2" type="submit">Register</button>
+        <button class="btn btn-light me-2" (click)="cancel()">Cancel</button>
+    </div>
+</form>
