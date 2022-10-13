@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { User } from '../_models/users';
+import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
 
 @Component({
