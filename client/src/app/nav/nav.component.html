@@ -33,7 +33,7 @@
                 <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
                 <button id="button-animated" dropdownToggle type="button"
                     class="btn btn-link dropdown-toggle text-light" aria-controls="dropdown-animated">
-                    Welcome {{user.userName | titlecase}} <span class="caret"></span>
+                    Welcome {{user.knownAs | titlecase}} <span class="caret"></span>
                 </button>
                 <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu mt-2" role="menu"
                     aria-labelledby="button-animated">
