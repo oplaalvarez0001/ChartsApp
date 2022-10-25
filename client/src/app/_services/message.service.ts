@@ -4,6 +4,7 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { BehaviorSubject, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MessagesComponent } from '../messages/messages.component';
+import { Group } from '../_models/group';
 import { Message } from '../_models/message';
 import { User } from '../_models/user';
 import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
@@ -40,6 +41,19 @@ export class MessageService {
       })
     })
 
+    this.hubConnection.on('UpdatedGroup', (group: Group) => {
+      if (group.connections.some(x => x.username === otherUseranme)){
+        this.messageThread$.pipe(take(1)).subscribe(messages=>{
+          messages.forEach(message=>{
+            if(!message.dateRead){
+              message.dateRead=new Date(Date.now())
+            }
+          })
+          this.messageThreadSource.next([...messages]);
+        })
+      }
+})
+
   }
 
   stopHubConnetion() {
@@ -67,6 +81,6 @@ export class MessageService {
   deleteMessage(id: number) {
     return this.http.delete(this.baseUrl + 'messages/' + id);
   }
-  
+
 
 }
